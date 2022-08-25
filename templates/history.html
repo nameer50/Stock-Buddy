@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   History
+{% endblock %}
+
+{% block main %}
+
+        {% if data %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th >Symbol</th>
+                    <th >Shares</th>
+                    <th >Price</th>
+                    <th >Type</th>
+                    <th >Transacted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td> {{row["stock"]}}</td>
+                    <td> {{row["shares"]}}</td>
+                    <td> {{row["price"]}}</td>
+                    <td> {{row["type"]}}</td>
+                    <td> {{row["date"]}} {{row["time"]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        {% else %}
+        <h1> NO TRANSACTIONS YET!</h1>
+
+        {% endif %}
+{% endblock %}

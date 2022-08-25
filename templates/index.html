@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Stock Buddy
+{% endblock %}
+
+{% block main %}
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                      <th>Symbol</th>
+                      <th>Name</th>
+                      <th>Shares</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in full_portfolio %}
+                    <tr>
+                      <td>{{item['Symbol']}}</td>
+                      <td>{{item['Name']}}</td>
+                      <td>{{item['Shares']}}</td>
+                      <td>{{item['Price'] | usd}}</td>
+                      <td>{{item['Total'] | usd }}</td>
+                    </tr>
+                    {% endfor %}
+
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="fw-bold text-end " colspan="4"> Cash</td>
+                      <td > {{balance | usd }}</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold text-end" colspan="4"> TOTAL</td>
+                      <td> {{portfolio_value | usd}}</td>
+                    </tr>
+                  </tfoot>
+
+
+            </table>
+{% endblock %}
